@@ -19,12 +19,12 @@ export { ControlItem, Value } from '@app/models/frontend';
     ]
 })
 export class SelectComponent implements OnInit, ControlValueAccessor {
-    @Input() items: ControlItem[];
-    @Input() placeholder: string;
+    @Input() items!: ControlItem[];
+    @Input() placeholder!: string;
     @Output() changed = new EventEmitter<Value>();
 
-    value: Value;
-    isDisabled: boolean;
+    value!: Value;
+    isDisabled!: boolean;
 
     constructor() { }
 

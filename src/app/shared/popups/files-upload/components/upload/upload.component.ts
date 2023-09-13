@@ -1,8 +1,9 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
-import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
+import {Component, OnInit, Input, Output, EventEmitter, OnDestroy} from '@angular/core';
 
-import { Observable, Subject } from 'rxjs';
-import { finalize, takeUntil } from 'rxjs/operators';
+import {Observable, Subject} from 'rxjs';
+import {finalize, takeUntil} from 'rxjs/operators';
+import {AngularFireStorage, AngularFireUploadTask} from "@angular/fire/compat/storage";
+import {UploadTaskSnapshot} from "@angular/fire/compat/storage/interfaces";
 
 
 @Component({
@@ -12,18 +13,19 @@ import { finalize, takeUntil } from 'rxjs/operators';
 })
 export class UploadComponent implements OnInit, OnDestroy {
 
-    @Input() file: File;
+    @Input() file!: File;
     @Output() completed = new EventEmitter<string>();
 
-    task: AngularFireUploadTask;
+    task!: AngularFireUploadTask;
 
-    percentage$: Observable<number>;
-    snapshot$: Observable<firebase.storage.UploadTaskSnapshot>;
-    downloadURL: string;
+    percentage$!: Observable<number | undefined>;
+    snapshot$!: Observable<UploadTaskSnapshot | undefined>;
+    downloadURL!: string;
 
     private destroy = new Subject<void>();
 
-    constructor(private storage: AngularFireStorage) { }
+    constructor(private storage: AngularFireStorage) {
+    }
 
     ngOnInit(): void {
         this.startUpload();

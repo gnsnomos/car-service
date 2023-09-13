@@ -17,11 +17,11 @@ export { ControlItem, Value } from '@app/models/frontend';
     ]
 })
 export class CheckboxesComponent implements OnInit, ControlValueAccessor {
-    @Input() items: ControlItem[];
-    @Output() changed = new EventEmitter<Value[]>();
+    @Input() items!: ControlItem[];
+    @Output() changed = new EventEmitter<Value[] | null>();
 
-    value: Value[];
-    isDisabled: boolean;
+    value!: Value[] | null;
+    isDisabled!: boolean;
 
     constructor() { }
 
@@ -53,7 +53,7 @@ export class CheckboxesComponent implements OnInit, ControlValueAccessor {
         this.changed.emit(selected);
     }
 
-    private getSelected(value: Value, checked: boolean): Value[] {
+    private getSelected(value: Value, checked: boolean): Value[] | null {
         const selected: Value[] = this.value ? [...this.value] : [];
 
         if (checked) {
@@ -69,7 +69,7 @@ export class CheckboxesComponent implements OnInit, ControlValueAccessor {
     }
 
     isChecked(value: Value): boolean {
-        return this.value && this.value.includes(value);
+        return !!this.value?.includes(value);
     }
 
 }

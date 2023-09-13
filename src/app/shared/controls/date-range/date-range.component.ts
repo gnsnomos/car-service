@@ -25,10 +25,10 @@ export interface Placeholder {
 })
 export class DateRangeComponent implements OnInit, ControlValueAccessor {
 
-    @Input() placeholder: Placeholder;
+    @Input() placeholder!: Placeholder;
     @Output() changed = new EventEmitter<Value>();
 
-    form: FormGroup;
+    form!: FormGroup;
 
     constructor(private fb: FormBuilder) { }
 
@@ -39,12 +39,12 @@ export class DateRangeComponent implements OnInit, ControlValueAccessor {
         });
     }
 
-    get min(): Date {
+    get min(): Date | null {
         const from = this.form.controls.from.value;
         return from ? new Date(from) : null;
     }
 
-    get max(): Date {
+    get max(): Date | null {
         const to = this.form.controls.to.value;
         return to ? new Date(to) : null;
     }

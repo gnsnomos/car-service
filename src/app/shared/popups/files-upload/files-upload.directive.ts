@@ -8,8 +8,8 @@ import { FilesUploadComponent } from './files-upload.component';
 })
 export class FilesUploadDirective {
 
-    @Input() multiple: boolean;
-    @Input() crop: boolean;
+    @Input() multiple!: boolean;
+    @Input() crop!: boolean;
 
     @Output() changed = new EventEmitter<string | string[]>();
 

@@ -9,7 +9,7 @@ import { SafeStyle, DomSanitizer } from '@angular/platform-browser';
 })
 export class UserPhotoComponent implements OnInit {
 
-    @Input() photoURL: string;
+    @Input() photoURL!: string;
 
     constructor(
         private sanitizer: DomSanitizer
@@ -18,7 +18,7 @@ export class UserPhotoComponent implements OnInit {
     ngOnInit(): void {
     }
 
-    get safePhotoURL(): SafeStyle {
+    get safePhotoURL(): SafeStyle | null {
         return this.photoURL ? this.sanitizer.bypassSecurityTrustStyle(`url(${this.photoURL})`) : null;
     }
 

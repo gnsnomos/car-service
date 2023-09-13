@@ -18,12 +18,12 @@ export { ControlItem, Value } from '@app/models/frontend';
 })
 export class RadiosComponent implements OnInit, ControlValueAccessor {
 
-    @Input() items: ControlItem[];
+    @Input() items!: ControlItem[];
 
     @Output() changed = new EventEmitter<Value>();
 
-    value: Value;
-    isDisabled: boolean;
+    value!: Value;
+    isDisabled!: boolean;
 
     constructor() { }
 

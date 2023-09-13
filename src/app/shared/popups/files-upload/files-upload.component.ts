@@ -13,11 +13,11 @@ export interface DialogData {
 })
 export class FilesUploadComponent implements OnInit {
 
-    isHovering: boolean;
+    isHovering!: boolean;
 
-    files: File[] = [];
-    imageFile: File;
-    isError: boolean;
+    files: (File | null)[] = [];
+    imageFile!: File | null;
+    isError!: boolean;
 
     filesURLs: string[] = [];
 
@@ -42,13 +42,13 @@ export class FilesUploadComponent implements OnInit {
             return;
         }
 
-        if (this.data.crop && files.length === 1 && files.item(0).type.split('/')[0] === 'image') {
+        if (this.data.crop && files.length === 1 && files.item(0)?.type.split('/')[0] === 'image') {
             this.imageFile = files.item(0);
             return;
         }
 
         for (let i = 0; i < files.length; i++) {
-            this.files.push(files.item(i));
+            this.files?.push(files.item(i));
         }
 
         console.log(files);
