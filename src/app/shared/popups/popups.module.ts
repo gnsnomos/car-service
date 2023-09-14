@@ -1,17 +1,18 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { FilesUploadModule } from './files-upload/files-upload.module';
+import {FilesUploadModule} from './files-upload/files-upload.module';
 
 
 @NgModule({
-    declarations: [],
-    imports: [
-        CommonModule,
-        FilesUploadModule
-    ],
-    exports: [
-        FilesUploadModule
-    ]
+  declarations: [],
+  imports: [
+    CommonModule,
+    FilesUploadModule
+  ],
+  exports: [
+    FilesUploadModule
+  ]
 })
-export class PopupsModule { }
+export class PopupsModule {
+}

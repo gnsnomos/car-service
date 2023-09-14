@@ -9,8 +9,6 @@ import { DropZoneDirective } from './directives/drop-zone/drop-zone.directive';
 import { UploadComponent } from './components/upload/upload.component';
 import { FileSizePipe } from './pipes/file-size/file-size.pipe';
 
-
-
 @NgModule({
     declarations: [FilesUploadDirective, FilesUploadComponent, DropZoneDirective, UploadComponent, FileSizePipe],
     imports: [

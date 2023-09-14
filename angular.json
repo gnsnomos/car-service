@@ -33,7 +33,19 @@
               "@angular/material/prebuilt-themes/purple-green.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "firebase",
+              "@firebase/app",
+              "firebase/app",
+              "@firebase/storage",
+              "@firebase/component",
+              "@firebase/database",
+              "@firebase/firestore",
+              "@firebase/functions",
+              "@firebase/performance",
+              "@firebase/remote-config"
+            ]
           },
           "configurations": {
             "production": {

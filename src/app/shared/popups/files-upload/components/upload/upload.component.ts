@@ -2,9 +2,8 @@ import {Component, OnInit, Input, Output, EventEmitter, OnDestroy} from '@angula
 
 import {Observable, Subject} from 'rxjs';
 import {finalize, takeUntil} from 'rxjs/operators';
-import {AngularFireStorage, AngularFireUploadTask} from "@angular/fire/compat/storage";
-import {UploadTaskSnapshot} from "@angular/fire/compat/storage/interfaces";
-
+import {AngularFireStorage, AngularFireUploadTask} from "@angular/fire/storage";
+import {UploadTaskSnapshot} from "@angular/fire/storage/interfaces";
 
 @Component({
     selector: 'app-upload',

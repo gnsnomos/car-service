@@ -1,4 +1,4 @@
-import {DocumentChangeAction} from "@angular/fire/compat/firestore";
+import {DocumentChangeAction} from "@angular/fire/firestore";
 
 interface Item {
     id?: string;
