@@ -1,13 +1,12 @@
-// import {DocumentChangeAction} from "@angular/fire/firestore";
+import {DocumentChangeAction} from "@angular/fire/compat/firestore";
 
-interface Item {
+interface Vehicle {
   id?: string;
 
   [key: string]: any;
 }
 
-// export const extractDocumentChangeActionData = (x: DocumentChangeAction<any>, addId = true): Item => {
-export const extractDocumentChangeActionData = (x: any, addId = true): Item => {
+export const extractDocumentChangeActionData = (x: DocumentChangeAction<any>, addId = true): Vehicle => {
   const data = x.payload.doc.data();
 
   if (addId) {

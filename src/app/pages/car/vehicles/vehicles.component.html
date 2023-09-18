@@ -1,0 +1,16 @@
+<div class="app-page">
+
+  <div class="app-page__header">
+    <h1>Vehicles</h1>
+  </div>
+
+  <div class="app-page__content">
+    <app-vehicle *ngFor="let vehicle of vehicles$ | async" [item]="vehicle" (edit)="onEdit($event)"
+                 (delete)="onDelete($event)"></app-vehicle>
+  </div>
+
+  <div class="app-page__footer">
+    <app-button (click)="onAdd()">Add</app-button>
+  </div>
+
+</div>

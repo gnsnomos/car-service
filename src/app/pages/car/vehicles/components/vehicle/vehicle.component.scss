@@ -1,0 +1,8 @@
+@import "styles/mixins";
+
+.vehicle {
+  @include card;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+}

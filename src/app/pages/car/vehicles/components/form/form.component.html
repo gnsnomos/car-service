@@ -1,0 +1,26 @@
+<div class="form">
+
+  <form [formGroup]="form" novalidate autocomplete="off" (ngSubmit)="onSubmit()">
+
+    <app-form-field label="Brand" [required]="true" [control]="form.controls.brand"
+                    [patternError]="regexErrors.safe">
+      <app-input formControlName="brand"></app-input>
+    </app-form-field>
+
+    <app-form-field label="Model" [required]="true" [control]="form.controls.model"
+                    [patternError]="regexErrors.numbers">
+      <app-input formControlName="model"></app-input>
+    </app-form-field>
+
+    <app-form-field label="Year" [required]="true" [control]="form.controls.year"
+                    [patternError]="regexErrors.numbers">
+      <app-input formControlName="year"></app-input>
+    </app-form-field>
+
+    <div class="form__actions">
+      <app-button type="submit">Save</app-button>
+    </div>
+
+  </form>
+
+</div>
