@@ -3,14 +3,14 @@ import {ActionReducerMap} from '@ngrx/store';
 import * as fromUser from './user';
 
 export interface State {
-    user?: fromUser.UserState;
+  user?: fromUser.UserState;
 }
 
 export const reducers: ActionReducerMap<State> = {
-    // @ts-ignore
-    user: fromUser.reducer
+  // @ts-ignore
+  user: fromUser.reducer
 };
 
 export const effects = [
-    fromUser.UserEffects
+  fromUser.UserEffects
 ];

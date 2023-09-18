@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { EmailConfirmComponent } from './email-confirm.component';
+import {EmailConfirmComponent} from './email-confirm.component';
 
 describe('EmailConfirmComponent', () => {
   let component: EmailConfirmComponent;
@@ -8,9 +8,9 @@ describe('EmailConfirmComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EmailConfirmComponent ]
+      declarations: [EmailConfirmComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -1,25 +1,26 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
-import { SafeStyle, DomSanitizer } from '@angular/platform-browser';
+import {Component, OnInit, Input, ChangeDetectionStrategy} from '@angular/core';
+import {SafeStyle, DomSanitizer} from '@angular/platform-browser';
 
 @Component({
-    selector: 'app-user-photo',
-    templateUrl: './user-photo.component.html',
-    styleUrls: ['./user-photo.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-user-photo',
+  templateUrl: './user-photo.component.html',
+  styleUrls: ['./user-photo.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UserPhotoComponent implements OnInit {
 
-    @Input() photoURL!: string;
+  @Input() photoURL!: string;
 
-    constructor(
-        private sanitizer: DomSanitizer
-    ) { }
+  constructor(
+    private sanitizer: DomSanitizer
+  ) {
+  }
 
-    ngOnInit(): void {
-    }
+  ngOnInit(): void {
+  }
 
-    get safePhotoURL(): SafeStyle | null {
-        return this.photoURL ? this.sanitizer.bypassSecurityTrustStyle(`url(${this.photoURL})`) : null;
-    }
+  get safePhotoURL(): SafeStyle | null {
+    return this.photoURL ? this.sanitizer.bypassSecurityTrustStyle(`url(${this.photoURL})`) : null;
+  }
 
 }

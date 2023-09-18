@@ -1,4 +1,4 @@
 export interface Icon {
-    src: string;
-    cssClass: string;
+  src: string;
+  cssClass: string;
 }

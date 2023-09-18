@@ -16,7 +16,8 @@ export class HeaderComponent {
 
   @Output() signOut = new EventEmitter<void>();
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+  }
 
   onSignOut(): void {
     this.signOut.emit();

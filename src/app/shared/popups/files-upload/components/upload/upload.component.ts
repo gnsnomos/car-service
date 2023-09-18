@@ -6,54 +6,54 @@ import {UploadTaskSnapshot} from "@angular/fire/compat/storage/interfaces";
 import {AngularFireStorage, AngularFireUploadTask} from "@angular/fire/compat/storage";
 
 @Component({
-    selector: 'app-upload',
-    templateUrl: './upload.component.html',
-    styleUrls: ['./upload.component.scss']
+  selector: 'app-upload',
+  templateUrl: './upload.component.html',
+  styleUrls: ['./upload.component.scss']
 })
 export class UploadComponent implements OnInit, OnDestroy {
 
-    @Input() file!: File;
-    @Output() completed = new EventEmitter<string>();
+  @Input() file!: File;
+  @Output() completed = new EventEmitter<string>();
 
-    task!: AngularFireUploadTask;
+  task!: AngularFireUploadTask;
 
-    percentage$!: Observable<number | undefined>;
-    snapshot$!: Observable<UploadTaskSnapshot | undefined>;
-    downloadURL!: string;
+  percentage$!: Observable<number | undefined>;
+  snapshot$!: Observable<UploadTaskSnapshot | undefined>;
+  downloadURL!: string;
 
-    private destroy = new Subject<void>();
+  private destroy = new Subject<void>();
 
-    constructor(private storage: AngularFireStorage) {
-    }
+  constructor(private storage: AngularFireStorage) {
+  }
 
-    ngOnInit(): void {
-        this.startUpload();
-    }
+  ngOnInit(): void {
+    this.startUpload();
+  }
 
-    ngOnDestroy(): void {
-        this.destroy.next();
-        this.destroy.complete();
-    }
+  ngOnDestroy(): void {
+    this.destroy.next();
+    this.destroy.complete();
+  }
 
-    startUpload(): void {
-        const path = `${this.file.type.split('/')[0]}/${Date.now()}_${this.file.name}`;
+  startUpload(): void {
+    const path = `${this.file.type.split('/')[0]}/${Date.now()}_${this.file.name}`;
 
-        const storageRef = this.storage.ref(path);
+    const storageRef = this.storage.ref(path);
 
-        this.task = this.storage.upload(path, this.file);
+    this.task = this.storage.upload(path, this.file);
 
-        this.percentage$ = this.task.percentageChanges();
-        this.snapshot$ = this.task.snapshotChanges();
+    this.percentage$ = this.task.percentageChanges();
+    this.snapshot$ = this.task.snapshotChanges();
 
-        this.snapshot$.pipe(
-            takeUntil(this.destroy),
-            finalize(async () => {
-                this.downloadURL = await storageRef.getDownloadURL().toPromise();
+    this.snapshot$.pipe(
+      takeUntil(this.destroy),
+      finalize(async () => {
+        this.downloadURL = await storageRef.getDownloadURL().toPromise();
 
-                this.completed.next(this.downloadURL);
-            })
-        ).subscribe();
+        this.completed.next(this.downloadURL);
+      })
+    ).subscribe();
 
-    }
+  }
 
 }

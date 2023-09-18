@@ -1,75 +1,78 @@
-import { Component, forwardRef, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import {Component, forwardRef, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {NG_VALUE_ACCESSOR, ControlValueAccessor} from '@angular/forms';
 
-import { MatDatepickerInputEvent } from '@angular/material/datepicker';
+import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 
 type Value = number;
 
 @Component({
-    selector: 'app-date',
-    templateUrl: './date.component.html',
-    styleUrls: ['./date.component.scss'],
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => DateComponent),
-            multi: true
-        }
-    ]
+  selector: 'app-date',
+  templateUrl: './date.component.html',
+  styleUrls: ['./date.component.scss'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => DateComponent),
+      multi: true
+    }
+  ]
 })
 export class DateComponent implements OnInit, ControlValueAccessor {
 
-    @Input() placeholder!: string;
+  @Input() placeholder!: string;
 
-    @Input() min!: Date;
+  @Input() min!: Date;
 
-    @Input() max!: Date;
+  @Input() max!: Date;
 
-    @Output() changed = new EventEmitter<Value | null>();
-    @Output() closed = new EventEmitter<void>();
+  @Output() changed = new EventEmitter<Value | null>();
+  @Output() closed = new EventEmitter<void>();
 
-    value!: Value | null;
-    isDisabled!: boolean;
+  value!: Value | null;
+  isDisabled!: boolean;
 
-    constructor() { }
+  constructor() {
+  }
 
-    ngOnInit(): void {
-    }
+  ngOnInit(): void {
+  }
 
-    get inputValue(): Date | null {
-        return this.value ? new Date(this.value) : null;
-    }
+  get inputValue(): Date | null {
+    return this.value ? new Date(this.value) : null;
+  }
 
-    private propagateChange: any = () => { };
-    private propagateTouched: any = () => { };
+  private propagateChange: any = () => {
+  };
+  private propagateTouched: any = () => {
+  };
 
-    writeValue(value: Value): void {
-        this.value = value;
-    }
+  writeValue(value: Value): void {
+    this.value = value;
+  }
 
-    registerOnChange(fn: any): void {
-        this.propagateChange = fn;
-    }
+  registerOnChange(fn: any): void {
+    this.propagateChange = fn;
+  }
 
-    registerOnTouched(fn: any): void {
-        this.propagateTouched = fn;
-    }
+  registerOnTouched(fn: any): void {
+    this.propagateTouched = fn;
+  }
 
-    setDisabledState(isDisabled: boolean): void {
-        this.isDisabled = isDisabled;
-    }
+  setDisabledState(isDisabled: boolean): void {
+    this.isDisabled = isDisabled;
+  }
 
-    onChanged(event: MatDatepickerInputEvent<Date>): void {
-        const value = event.value ? event.value.getTime() : null;
+  onChanged(event: MatDatepickerInputEvent<Date>): void {
+    const value = event.value ? event.value.getTime() : null;
 
-        this.value = value;
-        this.propagateChange(value);
-        this.changed.emit(value);
-    }
+    this.value = value;
+    this.propagateChange(value);
+    this.changed.emit(value);
+  }
 
-    onClosed(): void {
-        this.propagateTouched();
-        this.closed.emit();
-    }
+  onClosed(): void {
+    this.propagateTouched();
+    this.closed.emit();
+  }
 
 }

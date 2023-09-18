@@ -19,32 +19,32 @@ import {EffectsModule} from '@ngrx/effects';
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        HeaderComponent
-    ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
+  declarations: [
+    AppComponent,
+    HeaderComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
 
-        AngularFireModule.initializeApp(environment.firebase.config),
-        AngularFirestoreModule,
-        AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebase.config),
+    AngularFirestoreModule,
+    AngularFireStorageModule,
 
-        StoreModule.forRoot(reducers, {
-            runtimeChecks: {
-                strictStateImmutability: true,
-                strictActionImmutability: true
-            }
-        }),
-        StoreDevtools,
-        EffectsModule.forRoot(effects),
+    StoreModule.forRoot(reducers, {
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true
+      }
+    }),
+    StoreDevtools,
+    EffectsModule.forRoot(effects),
 
-        NotificationModule.forRoot()
-    ],
-    providers: [],
-    bootstrap: [AppComponent]
+    NotificationModule.forRoot()
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }
