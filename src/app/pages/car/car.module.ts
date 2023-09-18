@@ -5,10 +5,6 @@ import {CarRoutingModule} from './car-routing.module';
 import {StoreModule} from '@ngrx/store';
 import {effects, reducers} from '@app/pages/car/vehicles/store';
 import {EffectsModule} from '@ngrx/effects';
-import {MatDialogModule} from '@angular/material/dialog';
-import {ButtonModule} from '@app/shared';
-import {FormModule} from '@app/pages/car/vehicles/components/form/form.module';
-
 
 @NgModule({
   declarations: [],
@@ -16,10 +12,7 @@ import {FormModule} from '@app/pages/car/vehicles/components/form/form.module';
     CommonModule,
     StoreModule.forFeature('cars', reducers),
     EffectsModule.forFeature(effects),
-    CarRoutingModule,
-    MatDialogModule,
-    ButtonModule,
-    FormModule
+    CarRoutingModule
   ]
 })
 export class CarModule {

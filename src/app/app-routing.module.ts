@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {CarUserResolver} from "@app/pages/car/resolvers";
+import {CarUserResolver} from "./pages/car/resolvers";
 
 const routes: Routes = [
   {
