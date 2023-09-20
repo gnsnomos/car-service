@@ -1,10 +1,11 @@
-import {Component, OnInit, OnDestroy, Input, Output, EventEmitter, forwardRef} from '@angular/core';
+import {Component, OnInit, OnDestroy, Input, Output, EventEmitter, forwardRef, ViewChild} from '@angular/core';
 import {NG_VALUE_ACCESSOR, ControlValueAccessor, FormControl} from '@angular/forms';
 
 import {Subject, Observable} from 'rxjs';
 import {takeUntil, distinctUntilChanged, startWith, map, filter} from 'rxjs/operators';
 
 import {ControlItem, Value} from '@app/models/frontend';
+import {MatAutocomplete} from "@angular/material/autocomplete";
 
 export {ControlItem, Value} from '@app/models/frontend';
 
@@ -22,13 +23,16 @@ export {ControlItem, Value} from '@app/models/frontend';
 })
 export class AutocompleteComponent implements OnInit, OnDestroy, ControlValueAccessor {
 
-  @Input() items!: ControlItem[];
-  @Input() placeholder!: string;
+  @Input() items?: ControlItem[];
+  @Input() placeholder: string;
+  @Input() selectFirst = false;
 
   @Output() changed = new EventEmitter<Value>();
 
+  @ViewChild(MatAutocomplete) matAutocomplete: MatAutocomplete;
+
   formControl = new FormControl();
-  options$!: Observable<ControlItem[]>;
+  options$: Observable<ControlItem[] | undefined>;
 
   private destroy = new Subject<any>();
 
@@ -40,8 +44,10 @@ export class AutocompleteComponent implements OnInit, OnDestroy, ControlValueAcc
       startWith(''),
       filter(value => typeof value === 'string' || typeof value === 'object'),
       map(value => typeof value === 'string' ? value : value.label),
-      map(label => label ? this.filter(label) : this.items.slice())
+      map(label => label ? this.filter(label) : this.items?.slice())
     );
+
+    setTimeout(() => this.matAutocomplete.options.first.setActiveStyles(), 2000);
 
     this.formControl.valueChanges.pipe(
       takeUntil(this.destroy),
@@ -58,9 +64,9 @@ export class AutocompleteComponent implements OnInit, OnDestroy, ControlValueAcc
     this.destroy.complete();
   }
 
-  private filter(value: string): ControlItem[] {
+  private filter(value: string): ControlItem[] | undefined {
     const filterValue = value.toLowerCase();
-    return this.items.filter(item => item.label.toLowerCase().includes(filterValue));
+    return this.items?.filter(item => item.label.toLowerCase().includes(filterValue));
   }
 
   private propagateChange: any = () => {
@@ -69,7 +75,7 @@ export class AutocompleteComponent implements OnInit, OnDestroy, ControlValueAcc
   };
 
   writeValue(value: Value): void {
-    const selectedOption = this.items.find(item => item.value === value);
+    const selectedOption = this.items?.find(item => item.value === value);
     this.formControl.setValue(selectedOption);
   }
 

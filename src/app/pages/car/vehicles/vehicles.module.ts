@@ -7,6 +7,9 @@ import {ButtonModule} from "@app/shared";
 import {FormModule} from "@app/pages/car/vehicles/components/form/form.module";
 import {VehiclesComponent} from './vehicles.component';
 import {VehicleComponent} from '@app/pages/car/vehicles/components/vehicle/vehicle.component';
+import {StoreModule} from "@ngrx/store";
+import {effects, reducers} from "./store";
+import {EffectsModule} from "@ngrx/effects";
 
 @NgModule({
   declarations: [
@@ -15,6 +18,8 @@ import {VehicleComponent} from '@app/pages/car/vehicles/components/vehicle/vehic
   ],
   imports: [
     CommonModule,
+    StoreModule.forFeature('vehicles', reducers),
+    EffectsModule.forFeature(effects),
     VehiclesRoutingModule,
     MatDialogModule,
     ButtonModule,

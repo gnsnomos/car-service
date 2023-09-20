@@ -1,0 +1,30 @@
+<div class="form">
+  <h2 class="h2" *ngIf="!data.value else editService">Add new service</h2>
+  <ng-template #editService><h2 class="h2">Edit service</h2></ng-template>
+
+  <form [formGroup]="form" novalidate autocomplete="off" (ngSubmit)="onSubmit()">
+
+    <app-form-field label="Vehicle" [required]="true" [control]="form.controls.vehicle">
+      <app-autocomplete formControlName="vehicle" [items]="vehicles" [selectFirst]="true"></app-autocomplete>
+    </app-form-field>
+
+    <app-form-field label="Kilometers" [required]="true" [control]="form.controls.kilometers"
+                    [patternError]="regexErrors.numbers">
+      <app-input formControlName="kilometers"></app-input>
+    </app-form-field>
+
+    <app-form-field label="Type of Service" [required]="true" [control]="form.controls.typeOfService">
+      <app-input formControlName="typeOfService"></app-input>
+    </app-form-field>
+
+    <app-form-field label="Cost" [required]="true" [control]="form.controls.cost">
+      <app-input formControlName="cost"></app-input>
+    </app-form-field>
+
+    <div class="form__actions">
+      <app-button type="submit">Save</app-button>
+    </div>
+
+  </form>
+
+</div>

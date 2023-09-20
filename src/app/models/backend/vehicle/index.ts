@@ -8,3 +8,12 @@ export interface Vehicle {
   created: firestore.FieldValue;
   updated?: firestore.FieldValue;
 }
+
+export interface Service {
+  kilometers: string;
+  typeOfService: string;
+  vehicle: string;
+  cost: string;
+  created: firestore.FieldValue;
+  updated?: firestore.FieldValue;
+}

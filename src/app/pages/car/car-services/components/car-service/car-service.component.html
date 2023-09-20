@@ -1,0 +1,11 @@
+<div class="car-service">
+
+  <div class="car-service__content">
+    Car: {{ item.vehicleLabel }} <br> Type of service: {{ item.typeOfService }} @ {{ item.kilometers }}klm <br> {{ item.created | firebaseDateTransform | date }}
+  </div>
+
+  <div class="car-service__actions">
+    <app-button (click)="onEdit(item)">Edit</app-button>
+    <app-button (click)="onDelete(item.id)">Delete</app-button>
+  </div>
+</div>

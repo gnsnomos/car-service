@@ -9,11 +9,11 @@ export interface VehiclesState {
 
 export const reducers: ActionReducerMap<VehiclesState> = {
   // @ts-ignore
-  list: fromList.reducer
+  list: fromList.reducer,
 };
 
 export const effects: any[] = [
   ListEffects
 ];
 
-export const getVehiclesState = createFeatureSelector<VehiclesState>('cars');
+export const getVehiclesState = createFeatureSelector<VehiclesState>('vehicles');

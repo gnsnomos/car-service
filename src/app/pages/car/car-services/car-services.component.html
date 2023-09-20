@@ -1,0 +1,16 @@
+<div class="app-page">
+
+  <div class="app-page__header">
+    <h1>Car services</h1>
+  </div>
+
+  <div class="app-page__content">
+    <app-car-service *ngFor="let service of services$ | async" [item]="service" [vehicles]="vehicles$ | async" (edit)="onEdit($event)"
+                 (delete)="onDelete($event)"></app-car-service>
+  </div>
+
+  <div class="app-page__footer">
+    <app-button (click)="onAdd()">Add</app-button>
+  </div>
+
+</div>

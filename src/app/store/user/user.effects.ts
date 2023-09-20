@@ -22,8 +22,7 @@ export class UserEffects {
               private afAuth: AngularFireAuth,
               private afs: AngularFirestore,
               private router: Router,
-              private notification: NotificationService
-  ) {
+              private notification: NotificationService) {
   }
 
   init = createEffect(() =>
@@ -99,6 +98,7 @@ export class UserEffects {
       ofType(fromActions.Types.SIGN_OUT),
       switchMap(() =>
         from(this.afAuth.signOut()).pipe(
+          tap(() => this.router.navigate(['auth/login'])),
           map(() => new fromActions.SignOutSuccess()),
           catchError(err => of(new fromActions.SignOutError(err.message)))
         )

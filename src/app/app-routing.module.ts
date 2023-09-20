@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {CarUserResolver} from "./pages/car/resolvers";
+import {AuthGuard} from "@app/guards";
+import {CarUserResolver} from "@app/pages/car/resolvers";
 
 const routes: Routes = [
   {
@@ -13,6 +14,7 @@ const routes: Routes = [
       {
         path: 'cars',
         loadChildren: () => import('./pages/car/car.module').then(m => m.CarModule),
+        canActivate: [AuthGuard],
         resolve: {
           user: CarUserResolver
         }

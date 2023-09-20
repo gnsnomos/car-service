@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
 import {Vehicle} from "@app/pages/car/vehicles/store/list";
 import {FormComponent} from "@app/pages/car/vehicles/components/form/form.component";
@@ -13,7 +13,7 @@ import {ActivatedRoute} from "@angular/router";
   selector: 'app-vehicles',
   templateUrl: './vehicles.component.html'
 })
-export class VehiclesComponent {
+export class VehiclesComponent implements OnInit {
 
   vehicles$!: Observable<Vehicle[]>;
   user!: User | null;
@@ -26,9 +26,11 @@ export class VehiclesComponent {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(
       ({user}) => {
-        this.user = user;
-        this.vehicles$ = this.store.pipe(select(fromList.selectAll));
-        this.store.dispatch(new fromList.Read(this.user?.uid));
+        if (user) {
+          this.user = user;
+          this.vehicles$ = this.store.pipe(select(fromList.selectAll));
+          this.store.dispatch(new fromList.Read(user.uid));
+        }
       });
   }
 

@@ -2,7 +2,7 @@
   <input class="app-input" type="text" #search [placeholder]="placeholder || 'Pick one'" [formControl]="formControl"
          [matAutocomplete]="auto" (blur)="onBlur()">
 
-  <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+  <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" [autoActiveFirstOption]="true" [autoSelectActiveOption]="true">
 
     <mat-option *ngFor="let option of options$ | async" [value]="option">
 
