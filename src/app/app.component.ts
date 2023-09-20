@@ -3,6 +3,7 @@ import {Observable} from 'rxjs';
 import * as fromRoot from './store';
 import * as fromUser from './store/user';
 import {select, Store} from '@ngrx/store';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -10,12 +11,13 @@ import {select, Store} from '@ngrx/store';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'car-service';
+  title = 'Car service';
 
   isAuthorized$!: Observable<boolean>;
   user$!: Observable<fromUser.User | null>;
 
-  constructor(private store: Store<fromRoot.State>) {
+  constructor(private store: Store<fromRoot.State>,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -27,5 +29,12 @@ export class AppComponent {
 
   onSignOut(): void {
     this.store.dispatch(new fromUser.SignOut());
+  }
+
+  async onProfileNavigate(): Promise<void> {
+    this.user$.subscribe(async user => {
+      const path = user ? user.uid : 'new';
+      await this.router.navigate(['/profile', path]);
+    });
   }
 }

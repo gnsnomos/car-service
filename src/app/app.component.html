@@ -1,5 +1,4 @@
-<app-header [isAuthorized]="isAuthorized$ | async" [user]="user$ | async" [title]="title"
-            (signOut)="onSignOut()"></app-header>
+<app-sidenav [isAuthorized]="isAuthorized$ | async" [title]="title"
+             (signOut)="onSignOut()" (profileNavigate)="onProfileNavigate()"></app-sidenav>
 
-<router-outlet></router-outlet>
 

@@ -4,7 +4,6 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {HeaderComponent} from '@app/components/header/header.component';
 import {NotificationModule} from '@app/services';
 
 import {AngularFireModule} from '@angular/fire/compat';
@@ -17,11 +16,17 @@ const StoreDevtools = !environment.production ? StoreDevtoolsModule.instrument({
 import {effects, reducers} from '@app/store';
 import {EffectsModule} from '@ngrx/effects';
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatIconModule} from "@angular/material/icon";
+import {MatListModule} from "@angular/material/list";
+import {MatMenuModule} from "@angular/material/menu";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {SidenavComponent} from './components/sidenav/sidenav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    SidenavComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +46,13 @@ import {StoreDevtoolsModule} from "@ngrx/store-devtools";
     StoreDevtools,
     EffectsModule.forRoot(effects),
 
-    NotificationModule.forRoot()
+    NotificationModule.forRoot(),
+
+    MatMenuModule,
+    MatSidenavModule,
+    MatListModule,
+    MatToolbarModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -14,7 +14,7 @@ export class FormFieldComponent {
   @Input() patternError!: string;
 
   constructor() {
-    this.isInline = true;
+    this.isInline = false;
   }
 
   hasError(): boolean {
