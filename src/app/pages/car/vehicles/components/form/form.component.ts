@@ -44,6 +44,7 @@ export class FormComponent implements OnInit {
         updateOn: 'blur', validators: [
           Validators.required,
           Validators.maxLength(4),
+          Validators.minLength(4),
           Validators.pattern(regex.numbers)
         ]
       }]

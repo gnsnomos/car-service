@@ -24,6 +24,11 @@
       <app-button type="submit">Log in</app-button>
     </div>
 
+    <div class="app-page__register">
+      <span>You don't have an account? You can register</span>&nbsp;<a class="app-a" routerLink="auth/registration"
+                                                                       aria-label="Register">here</a>
+    </div>
+
   </form>
 
   <app-spinner *ngIf="loading$ | async"></app-spinner>

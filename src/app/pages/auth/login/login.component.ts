@@ -49,7 +49,6 @@ export class LoginComponent implements OnInit {
     if (this.form.valid) {
 
       const value = this.form.value;
-      console.log(value);
 
       const credentials: fromUser.EmailPasswordCredentials = {
         email: value.email,

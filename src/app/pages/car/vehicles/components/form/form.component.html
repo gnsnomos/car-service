@@ -1,5 +1,6 @@
 <div class="form">
-
+  <h2 class="h2" *ngIf="!data.value else editCar">Add new car</h2>
+  <ng-template #editCar><h2 class="h2">Edit car</h2></ng-template>
   <form [formGroup]="form" novalidate autocomplete="off" (ngSubmit)="onSubmit()">
 
     <app-form-field label="Brand" [required]="true" [control]="form.controls.brand"

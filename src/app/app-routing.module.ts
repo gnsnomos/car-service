@@ -18,6 +18,11 @@ const routes: Routes = [
         resolve: {
           user: CarUserResolver
         }
+      },
+      {
+        path: '**',
+        pathMatch: 'full',
+        redirectTo: 'cars'
       }
     ]
   }

@@ -8,6 +8,7 @@ import * as fromRoot from '@app/store';
 import * as fromList from './store/list';
 import {User} from "@app/store/user";
 import {ActivatedRoute} from "@angular/router";
+import {FormService} from "@app/services";
 
 @Component({
   selector: 'app-vehicles',
@@ -20,7 +21,8 @@ export class VehiclesComponent implements OnInit {
 
   constructor(public dialog: MatDialog,
               private store: Store<fromRoot.State>,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              private formService: FormService) {
   }
 
   ngOnInit(): void {
@@ -36,16 +38,16 @@ export class VehiclesComponent implements OnInit {
 
   onAdd(): void {
     this.dialog.open(FormComponent, {
-      width: '650px',
-      height: '320px',
+      width: this.formService.getModalWidth() + 'px',
+      height: '450px',
       data: {userId: this.user?.uid}
     });
   }
 
   onEdit(value: Vehicle): void {
     this.dialog.open(FormComponent, {
-      width: '650px',
-      height: '320px',
+      width: this.formService.getModalWidth() + 'px',
+      height: '430px',
       data: {value, userId: this.user?.uid}
     });
   }

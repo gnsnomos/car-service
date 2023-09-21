@@ -9,8 +9,9 @@ import * as fromList from './store/list';
 import {FormComponent} from '@app/pages/car/car-services/components/form/form.component';
 import * as fromDictionaries from './store/dictionaries';
 import {Service} from "@app/pages/car/car-services/store/list";
-import {filter, map, tap} from "rxjs/operators";
+import {filter, map} from "rxjs/operators";
 import {ControlItem, Dictionary} from "./store/dictionaries";
+import {FormService} from "@app/services";
 
 @Component({
   selector: 'app-car-services',
@@ -24,7 +25,8 @@ export class CarServicesComponent implements OnInit {
 
   constructor(public dialog: MatDialog,
               private store: Store<fromRoot.State>,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              private formService: FormService) {
   }
 
   ngOnInit(): void {
@@ -57,43 +59,21 @@ export class CarServicesComponent implements OnInit {
 
   onAdd(): void {
     this.dialog.open(FormComponent, {
-      width: this.getModalWidth() + 'px',
-      height: this.getModalHeight() + 'px',
+      width: this.formService.getModalWidth() + 'px',
+      height: this.formService.getModalHeight() + 'px',
       data: {userId: this.user.uid}
     });
   }
 
   onEdit(value: Service): void {
     this.dialog.open(FormComponent, {
-      width: this.getModalWidth() + 'px',
-      height: this.getModalHeight() + 'px',
+      width: this.formService.getModalWidth() + 'px',
+      height: this.formService.getModalHeight() + 'px',
       data: {value, userId: this.user.uid}
     });
   }
 
   onDelete(id: string): void {
     this.store.dispatch(new fromList.Delete(id, this.user.uid));
-  }
-
-  private getModalHeight(): number {
-    let height = 530;
-    const innerHeight = window.innerHeight;
-
-    if (height > innerHeight) {
-      height = innerHeight;
-    }
-
-    return height;
-  }
-
-  private getModalWidth(): number {
-    let width = 650;
-    const innerWidth = window.innerWidth;
-
-    if (width > innerWidth) {
-      width = innerWidth;
-    }
-
-    return width;
   }
 }

@@ -1,4 +1,4 @@
-.app-a {
+.app-a, .mat-nav-list .app-a {
   color: $primary;
   transition: 0.25s;
   cursor: pointer;
@@ -10,5 +10,10 @@
 
   &_active {
     color: $primary-dark;
+
+    .mdc-list-item__primary-text {
+      color: $primary-dark;
+      text-decoration: underline;
+    }
   }
 }
