@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve:dev",
-    "build": "ng build:dev",
+    "start": "npm run start:dev",
+    "build": "npm run build:dev",
     "test": "ng test",
     "start:dev": "ng serve --c=dev",
     "build:dev": "ng build --c=dev",
