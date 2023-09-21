@@ -1,0 +1,26 @@
+<mat-toolbar>
+  <button mat-icon-button (click)="sidenav.open('mouse')">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <span>{{ title }}</span>
+
+  <span class="example-spacer"></span>
+
+  <ng-container *ngIf="isAuthorized">
+    <!--      <button mat-icon-button (click)="onProfileNavigate()" aria-label="User profile">-->
+    <!--        <mat-icon>account_circle</mat-icon>-->
+    <!--      </button>-->
+    <span class="icons-spacer"></span>
+
+    <button mat-icon-button (click)="onSignOut()" aria-label="Sign out">
+      <mat-icon>exit_to_app</mat-icon>
+    </button>
+  </ng-container>
+
+  <ng-container *ngIf="!isAuthorized">
+    <button mat-icon-button routerLink="auth/login" aria-label="Sign in">
+      <mat-icon>person</mat-icon>
+    </button>
+  </ng-container>
+</mat-toolbar>

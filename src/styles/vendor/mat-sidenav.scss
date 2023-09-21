@@ -1,0 +1,9 @@
+mat-sidenav {
+  mat-nav-list a.mdc-list-item {
+    padding-right: 70px;
+
+    span.mdc-list-item__primary-text {
+      display: flex;
+    }
+  }
+}

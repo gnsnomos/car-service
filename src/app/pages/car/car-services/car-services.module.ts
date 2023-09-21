@@ -11,6 +11,7 @@ import {FirebaseDateTransformPipe} from '@app/pages/car/car-services/pipes/fireb
 import {StoreModule} from "@ngrx/store";
 import {effects, reducers} from "@app/pages/car/car-services/store";
 import {EffectsModule} from "@ngrx/effects";
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
   declarations: [
@@ -18,15 +19,16 @@ import {EffectsModule} from "@ngrx/effects";
     CarServiceComponent,
     FirebaseDateTransformPipe
   ],
-  imports: [
-    CommonModule,
-    StoreModule.forFeature('car-service', reducers),
-    EffectsModule.forFeature(effects),
-    CarServicesRoutingModule,
-    ButtonModule,
-    MatDialogModule,
-    FormModule
-  ]
+    imports: [
+        CommonModule,
+        StoreModule.forFeature('car-service', reducers),
+        EffectsModule.forFeature(effects),
+        CarServicesRoutingModule,
+        ButtonModule,
+        MatDialogModule,
+        FormModule,
+        MatIconModule
+    ]
 })
 export class CarServicesModule {
 }

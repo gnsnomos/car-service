@@ -16,17 +16,11 @@ const StoreDevtools = !environment.production ? StoreDevtoolsModule.instrument({
 import {effects, reducers} from '@app/store';
 import {EffectsModule} from '@ngrx/effects';
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
-import {MatSidenavModule} from "@angular/material/sidenav";
-import {MatIconModule} from "@angular/material/icon";
-import {MatListModule} from "@angular/material/list";
-import {MatMenuModule} from "@angular/material/menu";
-import {MatToolbarModule} from "@angular/material/toolbar";
-import {SidenavComponent} from './components/sidenav/sidenav.component';
+import {NavModule} from "@app/components/nav/nav.module";
 
 @NgModule({
   declarations: [
-    AppComponent,
-    SidenavComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -46,13 +40,8 @@ import {SidenavComponent} from './components/sidenav/sidenav.component';
     StoreDevtools,
     EffectsModule.forRoot(effects),
 
-    NotificationModule.forRoot(),
-
-    MatMenuModule,
-    MatSidenavModule,
-    MatListModule,
-    MatToolbarModule,
-    MatIconModule
+    NavModule,
+    NotificationModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

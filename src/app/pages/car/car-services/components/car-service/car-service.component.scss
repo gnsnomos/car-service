@@ -5,4 +5,34 @@
   margin-bottom: 16px;
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
+  row-gap: 20px;
+
+  @include sm {
+    flex-direction: row;
+  }
+
+  > .car-service__actions {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+  }
+
+  .car-service__content {
+    display: flex;
+    flex-direction: column;
+
+    &-vehicle, &-typeOfService, &-date {
+
+      & > div:last-child {
+        width: 160px;
+      }
+
+      display: flex;
+      flex-direction: row;
+      column-gap: 10px;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+  }
 }

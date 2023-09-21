@@ -26,15 +26,4 @@ export class AppComponent {
 
     this.store.dispatch(new fromUser.Init());
   }
-
-  onSignOut(): void {
-    this.store.dispatch(new fromUser.SignOut());
-  }
-
-  async onProfileNavigate(): Promise<void> {
-    this.user$.subscribe(async user => {
-      const path = user ? user.uid : 'new';
-      await this.router.navigate(['/profile', path]);
-    });
-  }
 }

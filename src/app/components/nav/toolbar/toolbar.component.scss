@@ -1,0 +1,16 @@
+button {
+  display: flex;
+}
+
+mat-icon {
+  width: 36px;
+  transform: scale(1.5);
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.icons-spacer {
+  flex: 0.05 1 auto;
+}

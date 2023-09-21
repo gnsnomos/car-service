@@ -1,0 +1,23 @@
+<ng-container *ngIf="!isAuthorized">
+  <a mat-list-item routerLink="auth/login" routerLinkActive="app-a_active" aria-label="Sign in">
+    <mat-icon>account_circle</mat-icon>
+    <span>Log in</span>
+  </a>
+  <a mat-list-item routerLink="auth/registration" routerLinkActive="app-a_active" aria-label="Register">
+    <mat-icon>account_circle</mat-icon>
+    <span>Registration</span>
+  </a>
+</ng-container>
+
+<ng-container *ngIf="isAuthorized">
+  <a mat-list-item routerLink="cars/vehicles" routerLinkActive #carsActive="routerLinkActive"
+     [class.app-a_active]="carsActive.isActive" aria-label="My cars">
+    <mat-icon>directions_car</mat-icon>
+    <span>Cars</span>
+  </a>
+  <a mat-list-item routerLink="cars/services" routerLinkActive #servicesActive="routerLinkActive"
+     [class.app-a_active]="servicesActive.isActive" aria-label="Services">
+    <mat-icon>build</mat-icon>
+    <span>Services</span>
+  </a>
+</ng-container>

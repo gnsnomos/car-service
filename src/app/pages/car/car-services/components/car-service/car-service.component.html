@@ -1,7 +1,24 @@
 <div class="car-service">
 
   <div class="car-service__content">
-    Car: {{ item.vehicleLabel }} <br> Type of service: {{ item.typeOfService }} @ {{ item.kilometers }}klm <br> {{ item.created | firebaseDateTransform | date }}
+    <div class="car-service__content-vehicle">
+      <div>
+        <mat-icon>directions_car</mat-icon>
+      </div>
+      <div>{{ item.vehicleLabel }}</div>
+    </div>
+    <div class="car-service__content-typeOfService">
+      <div>
+        <mat-icon>build</mat-icon>
+      </div>
+      <div>{{ item.typeOfService }} @ {{ item.kilometers }}klm</div>
+    </div>
+    <div class="car-service__content-date">
+      <div>
+        <mat-icon>calendar_today</mat-icon>
+      </div>
+      <div>{{ item.created | firebaseDateTransform | date }}</div>
+    </div>
   </div>
 
   <div class="car-service__actions">
