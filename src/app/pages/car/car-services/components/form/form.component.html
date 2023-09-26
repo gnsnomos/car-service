@@ -13,12 +13,32 @@
       <app-input formControlName="kilometers"></app-input>
     </app-form-field>
 
-    <app-form-field label="Type of Service" [required]="true" [control]="form.controls.typeOfService">
-      <app-input formControlName="typeOfService"></app-input>
+    <app-form-field label="Date of Service" [required]="true" [control]="form.controls.date">
+      <app-date formControlName="date" placeholder="Date of Service"></app-date>
     </app-form-field>
 
     <app-form-field label="Cost" [required]="true" [control]="form.controls.cost">
       <app-input formControlName="cost"></app-input>
+    </app-form-field>
+
+    <app-form-field label="Sintirisi Igra" [required]="true" [control]="form.controls.sintirisiIgra">
+      <app-checkboxes formControlName="sintirisiIgra" [items]="sintirisiIgraItems"></app-checkboxes>
+    </app-form-field>
+
+    <app-form-field label="Sintirisi Ilektrologika" [required]="true" [control]="form.controls.sintirisiIlektrologika">
+      <app-checkboxes formControlName="sintirisiIlektrologika" [items]="sintirisiIlektrologikaItems"></app-checkboxes>
+    </app-form-field>
+
+    <app-form-field label="Sintirisi Mixanika Meri" [required]="true" [control]="form.controls.sintirisiMixanikaMeri">
+      <app-checkboxes formControlName="sintirisiMixanikaMeri" [items]="sintirisiMixanikaMeriItems"></app-checkboxes>
+    </app-form-field>
+
+    <app-form-field label="Sintirisi Anartisi" [required]="true" [control]="form.controls.sintirisiAnartisi">
+      <app-checkboxes formControlName="sintirisiAnartisi" [items]="sintirisiAnartisiItems"></app-checkboxes>
+    </app-form-field>
+
+    <app-form-field label="Sintirisi Loipa" [required]="true" [control]="form.controls.sintirisiLoipa">
+      <app-checkboxes formControlName="sintirisiLoipa" [items]="sintirisiLoipaItems"></app-checkboxes>
     </app-form-field>
 
     <div class="form__actions">

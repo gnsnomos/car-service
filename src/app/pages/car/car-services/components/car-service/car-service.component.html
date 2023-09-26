@@ -11,13 +11,13 @@
       <div>
         <mat-icon>build</mat-icon>
       </div>
-      <div>{{ item.typeOfService }} @ {{ item.kilometers }}klm</div>
+      <div>{{ item.kilometers }}klm</div>
     </div>
     <div class="car-service__content-date">
       <div>
         <mat-icon>calendar_today</mat-icon>
       </div>
-      <div>{{ item.created | firebaseDateTransform | date }}</div>
+      <div>{{ item.date | date }}</div>
     </div>
   </div>
 

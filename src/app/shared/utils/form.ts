@@ -22,9 +22,9 @@ export interface ControlEntities {
 
 export const mapControls = (controls: ControlEntities): void => {
   Object.keys(controls).forEach(key => {
-    if (controls[key].map) {
-      // @ts-ignore
-      controls[key].map();
+    const mapFn = controls[key].map;
+    if (mapFn) {
+      mapFn();
     }
   });
 };

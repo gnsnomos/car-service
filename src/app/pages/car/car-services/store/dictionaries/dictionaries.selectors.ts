@@ -1,6 +1,5 @@
-import {createSelector, createFeatureSelector} from '@ngrx/store';
+import {createSelector} from '@ngrx/store';
 
-import {DictionariesState} from './dictionaries.reducer';
 import {getVehiclesState, VehiclesState} from "@app/pages/car/car-services/store";
 
 export const getDictionariesState = createSelector(
@@ -25,4 +24,29 @@ export const getIsReady = createSelector(
 export const getVehicles = createSelector(
   getDictionaries,
   (state) => state.vehicles
+);
+
+export const getSintirisiIgra = createSelector(
+  getDictionaries,
+  (state) => state.sintirisiIgra
+);
+
+export const getSintirisiIlektrologika = createSelector(
+  getDictionaries,
+  (state) => state.sintirisiIlektrologika
+);
+
+export const getSintirisiMixanikaMeri = createSelector(
+  getDictionaries,
+  (state) => state.sintirisiMixanikaMeri
+);
+
+export const getSintirisiAnartisi = createSelector(
+  getDictionaries,
+  (state) => state.sintirisiAnartisi
+);
+
+export const getSintirisiLoipa = createSelector(
+  getDictionaries,
+  (state) => state.sintirisiLoipa
 );

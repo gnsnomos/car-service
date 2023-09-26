@@ -2,12 +2,11 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ReactiveFormsModule} from '@angular/forms';
 
-import {
-  InputModule, FormFieldModule, AutocompleteModule
-} from '@app/shared/controls';
+import {AutocompleteModule, CheckboxesModule, DateModule, FormFieldModule, InputModule} from '@app/shared/controls';
 import {ButtonModule} from '@app/shared/buttons';
 
 import {FormComponent} from './form.component';
+import {MatNativeDateModule} from "@angular/material/core";
 
 
 @NgModule({
@@ -18,7 +17,11 @@ import {FormComponent} from './form.component';
     InputModule,
     FormFieldModule,
     ButtonModule,
-    AutocompleteModule
+    AutocompleteModule,
+    CheckboxesModule,
+    DateModule,
+
+    MatNativeDateModule,
   ]
 })
 export class FormModule {

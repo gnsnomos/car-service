@@ -11,7 +11,7 @@ export interface Vehicle {
 
 export interface Service {
   kilometers: string;
-  typeOfService: string;
+  date: number;
   vehicle: string;
   cost: string;
   created: firestore.FieldValue;
