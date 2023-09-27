@@ -17,7 +17,7 @@ type PasswordType = 'password' | 'text';
 })
 export class PasswordComponent implements OnInit, ControlValueAccessor {
 
-  @Input() placeholder!: string;
+  @Input() placeholder: string = $localize`Password`;
 
   @Output() changed = new EventEmitter<string>();
 

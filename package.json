@@ -7,9 +7,12 @@
     "build": "npm run build:dev",
     "test": "ng test",
     "start:dev": "ng serve --c=dev",
-    "build:dev": "ng build --c=dev",
+    "start:el": "ng serve --c=el",
+    "start:en": "ng serve --c=en",
+    "build:dev": "ng build --c=dev --localize",
     "start:prod": "ng serve --c=prod",
-    "build:prod": "ng build --c=prod"
+    "build:prod": "ng build --c=prod --localize",
+    "create-translation-file": "ng extract-i18n --output-path src/locale --format json"
   },
   "private": true,
   "dependencies": {
@@ -37,6 +40,7 @@
     "@angular-devkit/build-angular": "^16.2.1",
     "@angular/cli": "~16.2.1",
     "@angular/compiler-cli": "^16.2.0",
+    "@angular/localize": "^16.2.4",
     "@types/jasmine": "~4.3.0",
     "jasmine-core": "~4.6.0",
     "karma": "~6.4.0",

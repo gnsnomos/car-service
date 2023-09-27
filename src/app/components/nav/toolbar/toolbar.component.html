@@ -13,13 +13,13 @@
     <!--      </button>-->
     <span class="icons-spacer"></span>
 
-    <button mat-icon-button (click)="onSignOut()" aria-label="Sign out">
+    <button mat-icon-button (click)="onSignOut()" i18n-aria-label aria-label="Sign out">
       <mat-icon>exit_to_app</mat-icon>
     </button>
   </ng-container>
 
   <ng-container *ngIf="!isAuthorized">
-    <button mat-icon-button routerLink="auth/login" aria-label="Sign in">
+    <button mat-icon-button routerLink="auth/login" i18n-aria-label aria-label="Sign in">
       <mat-icon>person</mat-icon>
     </button>
   </ng-container>

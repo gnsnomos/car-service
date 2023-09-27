@@ -3,7 +3,6 @@ import {Observable} from 'rxjs';
 import * as fromRoot from './store';
 import * as fromUser from './store/user';
 import {select, Store} from '@ngrx/store';
-import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -11,13 +10,12 @@ import {Router} from "@angular/router";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Car service';
+  title = $localize`Car service`;
 
   isAuthorized$!: Observable<boolean>;
   user$!: Observable<fromUser.User | null>;
 
-  constructor(private store: Store<fromRoot.State>,
-              private router: Router) {
+  constructor(private store: Store<fromRoot.State>) {
   }
 
   ngOnInit() {

@@ -1,48 +1,48 @@
 <div class="form">
-  <h2 class="h2" *ngIf="!data.value else editService">Add new service</h2>
-  <ng-template #editService><h2 class="h2">Edit service</h2></ng-template>
+  <h2 class="h2" *ngIf="!data.value else editService" i18n>Add new service</h2>
+  <ng-template #editService><h2 class="h2" i18n>Edit service</h2></ng-template>
 
   <form [formGroup]="form" novalidate autocomplete="off" (ngSubmit)="onSubmit()">
 
-    <app-form-field label="Vehicle" [required]="true" [control]="form.controls.vehicle">
+    <app-form-field i18n-label label="Vehicle" [required]="true" [control]="form.controls.vehicle">
       <app-autocomplete formControlName="vehicle" [items]="vehicles" [selectFirst]="true"></app-autocomplete>
     </app-form-field>
 
-    <app-form-field label="Kilometers" [required]="true" [control]="form.controls.kilometers"
+    <app-form-field i18n-label label="Kilometers" [required]="true" [control]="form.controls.kilometers"
                     [patternError]="regexErrors.numbers">
       <app-input formControlName="kilometers"></app-input>
     </app-form-field>
 
-    <app-form-field label="Date of Service" [required]="true" [control]="form.controls.date">
-      <app-date formControlName="date" placeholder="Date of Service"></app-date>
+    <app-form-field i18n-label label="Date of Service" [required]="true" [control]="form.controls.date">
+      <app-date formControlName="date" i18n-placeholder placeholder="Date of Service"></app-date>
     </app-form-field>
 
-    <app-form-field label="Cost" [required]="true" [control]="form.controls.cost">
+    <app-form-field i18n-label label="Cost" [required]="true" [control]="form.controls.cost">
       <app-input formControlName="cost"></app-input>
     </app-form-field>
 
-    <app-form-field label="Sintirisi Igra" [required]="true" [control]="form.controls.sintirisiIgra">
+    <app-form-field i18n-label label="Sintirisi Igra" [control]="form.controls.sintirisiIgra">
       <app-checkboxes formControlName="sintirisiIgra" [items]="sintirisiIgraItems"></app-checkboxes>
     </app-form-field>
 
-    <app-form-field label="Sintirisi Ilektrologika" [required]="true" [control]="form.controls.sintirisiIlektrologika">
+    <app-form-field i18n-label label="Sintirisi Ilektrologika" [control]="form.controls.sintirisiIlektrologika">
       <app-checkboxes formControlName="sintirisiIlektrologika" [items]="sintirisiIlektrologikaItems"></app-checkboxes>
     </app-form-field>
 
-    <app-form-field label="Sintirisi Mixanika Meri" [required]="true" [control]="form.controls.sintirisiMixanikaMeri">
+    <app-form-field i18n-label label="Sintirisi Mixanika Meri" [control]="form.controls.sintirisiMixanikaMeri">
       <app-checkboxes formControlName="sintirisiMixanikaMeri" [items]="sintirisiMixanikaMeriItems"></app-checkboxes>
     </app-form-field>
 
-    <app-form-field label="Sintirisi Anartisi" [required]="true" [control]="form.controls.sintirisiAnartisi">
+    <app-form-field i18n-label label="Sintirisi Anartisi" [control]="form.controls.sintirisiAnartisi">
       <app-checkboxes formControlName="sintirisiAnartisi" [items]="sintirisiAnartisiItems"></app-checkboxes>
     </app-form-field>
 
-    <app-form-field label="Sintirisi Loipa" [required]="true" [control]="form.controls.sintirisiLoipa">
+    <app-form-field i18n-label label="Sintirisi Loipa" [control]="form.controls.sintirisiLoipa">
       <app-checkboxes formControlName="sintirisiLoipa" [items]="sintirisiLoipaItems"></app-checkboxes>
     </app-form-field>
 
     <div class="form__actions">
-      <app-button type="submit">Save</app-button>
+      <app-button type="submit" i18n>Save</app-button>
     </div>
 
   </form>
