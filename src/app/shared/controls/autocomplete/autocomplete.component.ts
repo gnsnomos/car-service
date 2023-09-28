@@ -1,8 +1,8 @@
-import {Component, OnInit, OnDestroy, Input, Output, EventEmitter, forwardRef, ViewChild} from '@angular/core';
-import {NG_VALUE_ACCESSOR, ControlValueAccessor, FormControl} from '@angular/forms';
+import {Component, EventEmitter, forwardRef, Input, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
+import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
 
-import {Subject, Observable} from 'rxjs';
-import {takeUntil, distinctUntilChanged, startWith, map, filter} from 'rxjs/operators';
+import {Observable, Subject} from 'rxjs';
+import {distinctUntilChanged, filter, map, startWith, takeUntil} from 'rxjs/operators';
 
 import {ControlItem, Value} from '@app/models/frontend';
 import {MatAutocomplete} from "@angular/material/autocomplete";
@@ -95,8 +95,8 @@ export class AutocompleteComponent implements OnInit, OnDestroy, ControlValueAcc
     }
   }
 
-  displayFn(item?: ControlItem): string | undefined {
-    return item ? item.label : undefined;
+  displayFn(item?: ControlItem): string {
+    return item ? item.label : '';
   }
 
   onBlur(): void {

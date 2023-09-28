@@ -9,6 +9,7 @@ import {AbstractControl} from '@angular/forms';
 export class FormFieldComponent {
   @Input() label!: string;
   @Input() required!: boolean;
+  @Input() matIcon: string = '';
   @Input() isInline: boolean;
   @Input() control!: AbstractControl;
   @Input() patternError!: string;

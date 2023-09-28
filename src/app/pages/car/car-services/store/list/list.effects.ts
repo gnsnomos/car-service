@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
 
 import {from, of} from 'rxjs';
-import {map, switchMap, catchError, take} from 'rxjs/operators';
+import {catchError, map, switchMap, take} from 'rxjs/operators';
 
 import {extractDocumentChangeActionData} from '@app/shared/utils/data';
 
@@ -26,7 +26,7 @@ export class ListEffects {
       ofType(fromActions.Types.READ),
       map((action: fromActions.Read) => action.userId),
       switchMap((userId) =>
-        this.afs.collection(`users/${userId}/services`, ref => ref.orderBy('created')).snapshotChanges().pipe(
+        this.afs.collection(`users/${userId}/services`, ref => ref.orderBy('created', 'desc')).snapshotChanges().pipe(
           take(1),
           // @ts-ignore
           map(changes => changes.map(x => extractDocumentChangeActionData(x))),

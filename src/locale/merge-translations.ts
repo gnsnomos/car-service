@@ -9,31 +9,52 @@ async function example() {
     const messagesJson = JSON.parse(messages);
     const messagesKeys = Object.keys(messagesJson.translations);
 
-    // el JSON translations file
+    // Target JSON translations file
     const elMessages = await fs.readFile(targetFile, {encoding: 'utf8'});
     const elMessagesJson = JSON.parse(elMessages);
     const elMessagesKeys = Object.keys(elMessagesJson.translations);
 
-    // check for missing keys
-    const missingKeys = messagesKeys.filter(messagesKey => !elMessagesKeys.includes(messagesKey));
+    // Check for missing keys
+    const missingTranslations = missingKeys(messagesKeys, messagesJson, elMessagesKeys);
 
-    // No missing translations
-    if (missingKeys.length === 0) {
-      console.log('No missing translation keys found!');
-      return;
-    }
+    // Check for obsolete keys
+    obsoleteKeys(messagesKeys, elMessagesKeys, elMessagesJson);
 
-    // Append missing translations
-    const missingTranslations = {};
-    missingKeys.forEach(missingKey => {
-      // @ts-ignore
-      missingTranslations[missingKey] = `[Translation needed]: ${messagesJson.translations[missingKey]}`;
-    });
-    fs.writeFile(targetFile, JSON.stringify({...elMessagesJson, translations: {...elMessagesJson.translations, ...missingTranslations}}));
-    console.log(missingKeys);
+    fs.writeFile(targetFile, JSON.stringify({
+      ...elMessagesJson,
+      translations: {...elMessagesJson.translations, ...missingTranslations}
+    }));
   } catch (err) {
     console.log(err);
   }
 }
 
 example();
+
+// @ts-ignore
+function missingKeys(messagesKeys, messagesJson, elMessagesKeys) {
+  // @ts-ignore
+  const missingKeys = messagesKeys.filter(messagesKey => !elMessagesKeys.includes(messagesKey));
+  const missingTranslations = {};
+  if (missingKeys.length > 0) {
+
+    // Append missing translations
+    // @ts-ignore
+    missingKeys.forEach(missingKey => {
+      // @ts-ignore
+      missingTranslations[missingKey] = `[Translation needed]: ${messagesJson.translations[missingKey]}`;
+    });
+  }
+  return missingTranslations;
+}
+
+// @ts-ignore
+function obsoleteKeys(messagesKeys, elMessagesKeys, elMessagesJson) {
+  // @ts-ignore
+  const obsoleteKeys = elMessagesKeys.filter(messagesKey => !messagesKeys.includes(messagesKey));
+  if (obsoleteKeys.length > 0) {
+    // Remove obsolete translations
+    // @ts-ignore
+    obsoleteKeys.forEach(obsoleteKey => delete elMessagesJson.translations[obsoleteKey]);
+  }
+}

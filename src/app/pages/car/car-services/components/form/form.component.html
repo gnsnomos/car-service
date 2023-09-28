@@ -21,23 +21,24 @@
       <app-input formControlName="cost"></app-input>
     </app-form-field>
 
-    <app-form-field i18n-label label="Sintirisi Igra" [control]="form.controls.sintirisiIgra">
+    <app-form-field i18n-label label="Liquids" [control]="form.controls.sintirisiIgra" matIcon="opacity">
       <app-checkboxes formControlName="sintirisiIgra" [items]="sintirisiIgraItems"></app-checkboxes>
     </app-form-field>
 
-    <app-form-field i18n-label label="Sintirisi Ilektrologika" [control]="form.controls.sintirisiIlektrologika">
+    <app-form-field i18n-label label="Electric" [control]="form.controls.sintirisiIlektrologika"
+                    matIcon="battery_charging_full">
       <app-checkboxes formControlName="sintirisiIlektrologika" [items]="sintirisiIlektrologikaItems"></app-checkboxes>
     </app-form-field>
 
-    <app-form-field i18n-label label="Sintirisi Mixanika Meri" [control]="form.controls.sintirisiMixanikaMeri">
+    <app-form-field i18n-label label="Machine" [control]="form.controls.sintirisiMixanikaMeri" matIcon="settings">
       <app-checkboxes formControlName="sintirisiMixanikaMeri" [items]="sintirisiMixanikaMeriItems"></app-checkboxes>
     </app-form-field>
 
-    <app-form-field i18n-label label="Sintirisi Anartisi" [control]="form.controls.sintirisiAnartisi">
+    <app-form-field i18n-label label="Suspension" [control]="form.controls.sintirisiAnartisi" matIcon="car_repair">
       <app-checkboxes formControlName="sintirisiAnartisi" [items]="sintirisiAnartisiItems"></app-checkboxes>
     </app-form-field>
 
-    <app-form-field i18n-label label="Sintirisi Loipa" [control]="form.controls.sintirisiLoipa">
+    <app-form-field i18n-label label="Other" [control]="form.controls.sintirisiLoipa" matIcon="tire_repair">
       <app-checkboxes formControlName="sintirisiLoipa" [items]="sintirisiLoipaItems"></app-checkboxes>
     </app-form-field>
 

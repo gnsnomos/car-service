@@ -7,6 +7,7 @@ import {ButtonModule} from '@app/shared/buttons';
 
 import {FormComponent} from './form.component';
 import {MatNativeDateModule} from "@angular/material/core";
+import {MatIconModule} from "@angular/material/icon";
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import {MatNativeDateModule} from "@angular/material/core";
     DateModule,
 
     MatNativeDateModule,
+    MatIconModule
   ]
 })
 export class FormModule {
