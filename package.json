@@ -9,10 +9,11 @@
     "start:dev": "ng serve --c=dev",
     "start:el": "ng serve --c=el",
     "start:en": "ng serve --c=en",
-    "build:dev": "ng build --c=dev --localize",
+    "build:dev": "npm run import-missing-translations && ng build --c=dev --localize",
     "start:prod": "ng serve --c=prod",
-    "build:prod": "ng build --c=prod --localize",
-    "create-translation-file": "ng extract-i18n --output-path src/locale --format json"
+    "build:prod": "npm run import-missing-translations && ng build --c=prod --localize",
+    "create-translation-file": "ng extract-i18n --output-path src/locale --format json",
+    "import-missing-translations": "node .\\src\\locale\\merge-translations.ts"
   },
   "private": true,
   "dependencies": {
