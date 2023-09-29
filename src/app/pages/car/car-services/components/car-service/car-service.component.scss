@@ -1,31 +1,51 @@
 @import "styles/mixins";
 
 .car-service {
-  @include card;
-  margin-bottom: 16px;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  row-gap: 20px;
-
   @include sm {
     flex-direction: row;
   }
 
-  > .car-service__actions {
+  .mat-expansion-panel-header {
+    font-size: 1.1rem;
+    font-weight: 400;
+  }
+
+  .mat-expansion-panel-header-description {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    flex-grow: 1;
+    align-items: flex-start;
+  }
+
+  .car-service__actions {
     justify-content: center;
     display: flex;
     align-items: center;
+    padding-top: 20px;
   }
 
   .car-service__content {
     display: flex;
     flex-direction: column;
 
-    &-vehicle, &-typeOfService, &-date {
+    &-vehicle, &-typeOfService, &-date, &-cost {
 
-      & > div:last-child {
-        width: 160px;
+
+      & > div {
+        &:first-child {
+          width: 30px;
+        }
+
+        &:last-child {
+          width: 100%;
+        }
+      }
+
+      @include sm {
+        & > div:last-child {
+          width: 200px;
+        }
       }
 
       display: flex;
@@ -33,6 +53,14 @@
       column-gap: 10px;
       justify-content: space-evenly;
       align-items: center;
+    }
+  }
+
+  mat-panel-title {
+    .car-service__content-date, .car-service__content-cost {
+      @include xs {
+        display: none;
+      }
     }
   }
 }

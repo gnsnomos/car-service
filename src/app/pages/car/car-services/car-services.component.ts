@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {Observable, of, switchMap, zip} from 'rxjs';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {debounceTime, fromEvent, Observable, of, Subscription, switchMap, zip} from 'rxjs';
 import {User} from '@app/models/backend/user';
 import {MatDialog} from '@angular/material/dialog';
 import {select, Store} from '@ngrx/store';
@@ -8,9 +8,9 @@ import {ActivatedRoute} from '@angular/router';
 import * as fromList from './store/list';
 import {FormComponent} from '@app/pages/car/car-services/components/form/form.component';
 import * as fromDictionaries from './store/dictionaries';
+import {ControlItem, Dictionary} from './store/dictionaries';
 import {Service} from "@app/pages/car/car-services/store/list";
 import {filter, map} from "rxjs/operators";
-import {ControlItem, Dictionary} from "./store/dictionaries";
 import {FormService} from "@app/services";
 
 @Component({
@@ -18,10 +18,19 @@ import {FormService} from "@app/services";
   templateUrl: './car-services.component.html',
   styleUrls: ['./car-services.component.scss']
 })
-export class CarServicesComponent implements OnInit {
+export class CarServicesComponent implements OnInit, OnDestroy {
   user: User;
   services$: Observable<Service[]>;
   vehicles$: Observable<ControlItem[]>;
+
+  collapsedHeight = '80px';
+  expandedHeight = '90px';
+
+  private readonly expansionPanelCollapsedHeightSmallScreens = '120px';
+  private readonly expansionPanelExpandedHeightSmallScreens = '130px';
+  private readonly expansionPanelCollapsedHeightLargerScreens = '80px';
+  private readonly expansionPanelExpandedHeightLargerScreens = '90px';
+  private onResize$: Subscription;
 
   constructor(public dialog: MatDialog,
               private store: Store<fromRoot.State>,
@@ -35,6 +44,11 @@ export class CarServicesComponent implements OnInit {
       filter((vehicles: Dictionary) => !!vehicles),
       map(vehicles => vehicles.controlItems)
     );
+
+    this.setExpansionPanelHeight();
+
+    this.onResize$ = fromEvent(window, 'resize').pipe(debounceTime(400))
+      .subscribe(_ => this.setExpansionPanelHeight());
 
     this.activatedRoute.data.subscribe(
       ({user}) => {
@@ -57,6 +71,10 @@ export class CarServicesComponent implements OnInit {
       });
   }
 
+  ngOnDestroy(): void {
+    this.onResize$.unsubscribe();
+  }
+
   onAdd(): void {
     this.dialog.open(FormComponent, {
       width: this.formService.getModalWidth() + 'px',
@@ -75,5 +93,15 @@ export class CarServicesComponent implements OnInit {
 
   onDelete(id: string): void {
     this.store.dispatch(new fromList.Delete(id, this.user.uid));
+  }
+
+  private setExpansionPanelHeight(width: number = window.innerWidth): void {
+    if (width <= 430) {
+      this.collapsedHeight = this.expansionPanelCollapsedHeightSmallScreens;
+      this.expandedHeight = this.expansionPanelExpandedHeightSmallScreens;
+    } else {
+      this.collapsedHeight = this.expansionPanelCollapsedHeightLargerScreens;
+      this.expandedHeight = this.expansionPanelExpandedHeightLargerScreens;
+    }
   }
 }

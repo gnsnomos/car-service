@@ -4,8 +4,13 @@
   padding-bottom: 8px;
 
   &__label {
-    display: block;
+    display: flex;
+    align-items: center;
     margin: 0 0 6px 0;
+
+    mat-icon {
+      margin-right: 6px;
+    }
   }
 
   &__control {

@@ -17,6 +17,20 @@
   @include shadow;
 }
 
+// Very small devices
+@mixin xs-below {
+  @media (max-width: #{$screen-xs-min}) {
+    @content;
+  }
+}
+
+// Very small devices
+@mixin xs {
+  @media (min-width: #{$screen-xs-min}) {
+    @content;
+  }
+}
+
 // Small devices
 @mixin sm {
   @media (min-width: #{$screen-sm-min}) {

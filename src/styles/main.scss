@@ -18,3 +18,10 @@ body {
   background: $base;
   color: $on-base;
 }
+
+@include xs-below {
+  .mat-content {
+    flex-direction: column !important;
+    align-items: baseline;
+  }
+}

@@ -9,11 +9,18 @@ export interface Vehicle {
   updated?: firestore.FieldValue;
 }
 
+export type MaintenanceType = { value: string, label: string };
+
 export interface Service {
   kilometers: string;
   date: number;
   vehicle: string;
   cost: string;
+  sintirisiAnartisi: MaintenanceType[];
+  sintirisiIgra: MaintenanceType[];
+  sintirisiIlektrologika: MaintenanceType[];
+  sintirisiLoipa: MaintenanceType[];
+  sintirisiMixanikaMeri: MaintenanceType[];
   created: firestore.FieldValue;
   updated?: firestore.FieldValue;
 }

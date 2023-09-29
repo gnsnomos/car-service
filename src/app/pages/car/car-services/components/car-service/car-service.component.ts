@@ -10,9 +10,13 @@ import {ControlItem} from "@app/models/frontend";
 export class CarServiceComponent {
   @Input() item: Service;
   @Input() vehicles!: ControlItem[];
+  @Input() collapsedHeight: string;
+  @Input() expandedHeight: string;
 
   @Output() edit = new EventEmitter<Service>();
   @Output() delete = new EventEmitter<string>();
+
+  panelOpenState = false;
 
   onEdit(vehicle: Service): void {
     this.edit.emit(vehicle);

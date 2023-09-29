@@ -1,0 +1,15 @@
+<div class="maintenance-tasks__container">
+    <ng-container *ngFor="let task of tasks">
+        <div *ngIf="task.items.length" class="maintenance-task__container">
+            <label class="maintenance-task__title">
+                <mat-icon>opacity</mat-icon>
+                {{task.label}}</label>
+            <ul>
+                <li *ngFor="let item of task.items">
+                    <mat-icon>check_circle_outline</mat-icon>
+                    <label class="maintenance-task__label">{{ item }}</label>
+                </li>
+            </ul>
+        </div>
+    </ng-container>
+</div>

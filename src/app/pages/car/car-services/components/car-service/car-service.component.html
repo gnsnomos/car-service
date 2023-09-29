@@ -1,28 +1,75 @@
+<!--<div class="car-service">-->
+
+<!--  <div class="car-service__content">-->
+<!--    <div class="car-service__content-vehicle">-->
+<!--      <div>-->
+<!--        <mat-icon>directions_car</mat-icon>-->
+<!--      </div>-->
+<!--      <div>{{ item.vehicleLabel }}</div>-->
+<!--    </div>-->
+<!--    <div class="car-service__content-typeOfService">-->
+<!--      <div>-->
+<!--        <mat-icon>build</mat-icon>-->
+<!--      </div>-->
+<!--      <div i18n>{{ item.kilometers }}klm</div>-->
+<!--    </div>-->
+<!--    <div class="car-service__content-date">-->
+<!--      <div>-->
+<!--        <mat-icon>calendar_today</mat-icon>-->
+<!--      </div>-->
+<!--      <div>{{ item.date | date }}</div>-->
+<!--    </div>-->
+<!--  </div>-->
+
+<!--  <div class="car-service__actions">-->
+<!--    <app-button (click)="onEdit(item)" i18n>Edit</app-button>-->
+<!--    <app-button (click)="onDelete(item.id)" i18n>Delete</app-button>-->
+<!--  </div>-->
+<!--</div>-->
+
 <div class="car-service">
-
-  <div class="car-service__content">
-    <div class="car-service__content-vehicle">
-      <div>
-        <mat-icon>directions_car</mat-icon>
-      </div>
-      <div>{{ item.vehicleLabel }}</div>
-    </div>
-    <div class="car-service__content-typeOfService">
-      <div>
-        <mat-icon>build</mat-icon>
-      </div>
-      <div i18n>{{ item.kilometers }}klm</div>
-    </div>
-    <div class="car-service__content-date">
-      <div>
-        <mat-icon>calendar_today</mat-icon>
-      </div>
-      <div>{{ item.date | date }}</div>
-    </div>
-  </div>
-
-  <div class="car-service__actions">
-    <app-button (click)="onEdit(item)" i18n>Edit</app-button>
-    <app-button (click)="onDelete(item.id)" i18n>Delete</app-button>
-  </div>
+    <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+            <mat-expansion-panel-header [collapsedHeight]="collapsedHeight" [expandedHeight]="expandedHeight">
+                <mat-panel-title>
+                    <div class="car-service__content">
+                        <div class="car-service__content-vehicle">
+                            <div>
+                                <mat-icon>directions_car</mat-icon>
+                            </div>
+                            <div>{{ item.vehicleLabel }}</div>
+                        </div>
+                        <div class="car-service__content-typeOfService">
+                            <div>
+                                <mat-icon>flag</mat-icon>
+                            </div>
+                            <div i18n>{{ item.kilometers }}klm</div>
+                        </div>
+                    </div>
+                </mat-panel-title>
+                <mat-panel-description>
+                    <div class="car-service__content-date">
+                        <div>
+                            <mat-icon>calendar_today</mat-icon>
+                        </div>
+                        <div>{{ item.date | date }}</div>
+                    </div>
+                    <div class="car-service__content-cost">
+                        <div>
+                            <mat-icon>payments</mat-icon>
+                        </div>
+                        <div>{{ item.cost | currency:'EUR' }}</div>
+                    </div>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div>
+                <app-maintenance-tasks [service]="item"></app-maintenance-tasks>
+                <div class="car-service__actions">
+                    <app-button (click)="onEdit(item)" i18n>Edit</app-button>
+                    <app-button (click)="onDelete(item.id)" i18n>Delete</app-button>
+                </div>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
 </div>
